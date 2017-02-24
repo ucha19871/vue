@@ -19,7 +19,7 @@
         <hr>
         <h3>Tasks</h3>
         <ul>
-            <li v-for="task in tasks">{{task.title}} <button :disabled="task.completed">Complete Task</button></li>
+            <li v-for="task in tasks">{{task.title}} <button :disabled="task.completed" @click="completeTask(task.id)">Complete</button></li>
         </ul>
 
         <h3>inCompleted Tasks</h3>
@@ -41,11 +41,11 @@
                 newName: '',
                 names: ['Ucha', 'Tucha', 'Dgucha', 'Bucha', 'Nucha', 'Sucha', 'Klucha', 'Tynucha'],
                 tasks:[
-                    {title:'Go to store',completed:true},
-                    {title:'Finish coding',completed:false},
-                    {title:'Clean table',completed:true},
-                    {title:'Go to Bank',completed:false},
-                    {title:'Clear inbox',completed:true},
+                    {id:1,title:'Go to store',completed:true},
+                    {id:2,title:'Finish coding',completed:false},
+                    {id:3,title:'Clean table',completed:true},
+                    {id:4,title:'Go to Bank',completed:false},
+                    {id:5,title:'Clear inbox',completed:true},
                 ]
             }
         },
@@ -59,6 +59,12 @@
 
             toggleClass(){
                 this.isLoading = !this.isLoading;
+            },
+
+            completeTask(id){
+                let t = this.tasks.find(task => task.id == id);
+                return t.completed = true
+                //console.log(t);
             }
 
         },
