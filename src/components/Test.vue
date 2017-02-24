@@ -27,6 +27,29 @@
             <li v-for="itask in incompleteTasks">{{itask.title}} </li>
         </ul>
 
+        <hr>
+        <h2>Modal</h2>
+        <div class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Modal title</p>
+                    <button class="delete"></button>
+                </header>
+                <section class="modal-card-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci consectetur consequuntur,
+                    enim esse eveniet facilis fugiat iure laborum laudantium libero maxime odit perspiciatis quasi
+                    repellat sequi tempora tenetur voluptatibus.
+                </section>
+                <footer class="modal-card-foot">
+                    <a class="button is-success">Save changes</a>
+                    <a class="button">Cancel</a>
+                </footer>
+            </div>
+        </div>
+
+
+        <br><br><br>
     </div>
 </template>
 
@@ -35,6 +58,7 @@
         name: 'test',
         data () {
             return {
+                isActiveModal: false,
                 isLoading: false,
                 className: 'color-red',
                 buttonTitle: 'text to show  up on hovering on the button',
