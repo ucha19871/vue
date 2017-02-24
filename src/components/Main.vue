@@ -1,16 +1,20 @@
 <template>
-  <div class="hello">
+  <div class="main">
     <img src="../assets/logo.png">
     <h1>{{ msg }}</h1>
+    <nav>
+      <router-link to="test">Test</router-link>
+      <router-link to="test">Something</router-link>
+    </nav>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'hello',
+  name: 'main',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue Project'
     }
   }
 }
