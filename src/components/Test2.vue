@@ -5,10 +5,27 @@
     <el-col :span="8">
     
     <h2>{{ msg }}</h2>
-    <el-input type="text" @blur="testUpdated" :disabled="textApplied">
+    <el-input v-validate="'required'" name="tt"  type="text" @blur="testUpdated" :disabled="textApplied">
+    <span v-show="errors.has('tt')" class="help is-danger">{{ errors.first('email') }}</span>
     <hr>
 
     </el-col>
+
+    <el-col :span="8">
+      <div class="column is-12">
+          <label class="label" for="email">Email</label>
+          <p :class="{ 'control': true }">
+              <input v-validate="'required|email'" 
+              :class="{'input': true, 'is-danger': errors.has('email') }" 
+              name="email" 
+              type="text"
+               placeholder="Email">
+              <span v-show="errors.has('email')" class="help is-danger">{{ errors.first('email') }}</span>
+          </p>
+      </div>
+    </el-col>
+
+
   </el-row>
     
     <el-row>
