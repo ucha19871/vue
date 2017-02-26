@@ -6,28 +6,37 @@
       <router-link to="test">Test</router-link>
       <router-link to="test2">Test 2</router-link>
     </nav>
-
   </div>
 </template>
 
 <script>
-import Test from './Test.vue';
 export default {
   name: 'main',
   data () {
     return {
       msg: 'Welcome to Your Vue Project'
     }
-  },
-  methods:{
-    something(){
-      alert('something')
-    },
-    doSomething(){
-      Event.$on('applied',() => alert('Something'))
-    }
-  },
-
+  }
 }
 </script>
 
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h1, h2 {
+  font-weight: normal;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+a {
+  color: #42b983;
+}
+</style>
