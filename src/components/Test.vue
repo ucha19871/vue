@@ -6,7 +6,7 @@
         </ul>
 
 
-        <input type="text" v-model="newName">
+        <input type="text" v-model="newName" @keyup.enter="addName">
         <button @click="addName">Add Name</button>
 
         <hr>

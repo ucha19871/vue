@@ -4,7 +4,7 @@
     <h1>{{ msg }}</h1>
     <nav>
       <router-link to="test">Test</router-link>
-      <router-link to="test">Something</router-link>
+      <router-link to="test2">Test 2</router-link>
     </nav>
   </div>
 </template>
