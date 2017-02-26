@@ -1,6 +1,15 @@
 <template>
     <div class="test">
 
+        
+        <h2>Testing Test2 component</h2>
+        <test2 @applied="onApplied" :disabled="textApplied"></test2>
+        <div v-if="textApplied">Text was applied</div>
+
+
+
+        <hr>
+        <br><br><br>
         <ul>
             <li v-for="name in names"><h3>{{name}}</h3></li>
         </ul>
@@ -54,10 +63,12 @@
 </template>
 
 <script>
+    import Test2 from './Test2.vue';
     export default {
         name: 'test',
         data () {
             return {
+                textApplied: false,
                 isActiveModal: false,
                 isLoading: false,
                 className: 'color-red',
@@ -89,6 +100,11 @@
                 let t = this.tasks.find(task => task.id == id);
                 return t.completed = true
                 //console.log(t);
+            },
+
+            onApplied(){
+                this.textApplied = true;
+                //alert('Parrent applied');
             }
 
         },
@@ -100,9 +116,11 @@
             incompleteTasks(){
                 return this.tasks.filter(task => !task.completed);
             }
+        },
+
+        components: {
+            'test2': Test2
         }
-
-
     }
 </script>
 
