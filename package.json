@@ -9,8 +9,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "bulma": "^0.3.1",
     "element-ui": "^1.2.1",
+    "vee-validate": "^2.0.0-beta.23",
     "vue": "^2.1.10",
     "vue-router": "^2.2.0"
   },
