@@ -1,11 +1,10 @@
 <template>
     <div class="test">
 
-        
+
         <h2>Testing Test2 component</h2>
         <test2 @applied="onApplied" :disabled="textApplied"></test2>
         <div v-if="textApplied">Text was applied</div>
-
 
 
         <hr>
@@ -28,12 +27,14 @@
         <hr>
         <h3>Tasks</h3>
         <ul>
-            <li v-for="task in tasks">{{task.title}} <button :disabled="task.completed" @click="completeTask(task.id)">Complete</button></li>
+            <li v-for="task in tasks">{{task.title}}
+                <button :disabled="task.completed" @click="completeTask(task.id)">Complete</button>
+            </li>
         </ul>
 
         <h3>inCompleted Tasks</h3>
         <ul>
-            <li v-for="itask in incompleteTasks">{{itask.title}} </li>
+            <li v-for="itask in incompleteTasks">{{itask.title}}</li>
         </ul>
 
         <hr>
@@ -75,12 +76,12 @@
                 buttonTitle: 'text to show  up on hovering on the button',
                 newName: '',
                 names: ['Ucha', 'Tucha', 'Dgucha', 'Bucha', 'Nucha', 'Sucha', 'Klucha', 'Tynucha'],
-                tasks:[
-                    {id:1,title:'Go to store',completed:true},
-                    {id:2,title:'Finish coding',completed:false},
-                    {id:3,title:'Clean table',completed:true},
-                    {id:4,title:'Go to Bank',completed:false},
-                    {id:5,title:'Clear inbox',completed:true},
+                tasks: [
+                    {id: 1, title: 'Go to store', completed: true},
+                    {id: 2, title: 'Finish coding', completed: false},
+                    {id: 3, title: 'Clean table', completed: true},
+                    {id: 4, title: 'Go to Bank', completed: false},
+                    {id: 5, title: 'Clear inbox', completed: true},
                 ]
             }
         },

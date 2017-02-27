@@ -7,6 +7,7 @@ import ElementUI from 'element-ui'
 import Axios from 'axios'
 import 'element-ui/lib/theme-default/index.css'
 import VeeValidate from 'vee-validate';
+import VueCookie from 'vue-cookie';
 
 const config = {
     errorBagName: 'errors', // change if property conflicts.
@@ -28,6 +29,7 @@ const config = {
 
 Vue.use(VeeValidate, config);
 Vue.use(ElementUI)
+Vue.use(VueCookie);
 Vue.prototype.$http = Axios
 
 /* eslint-disable no-new */
