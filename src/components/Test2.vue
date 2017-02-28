@@ -100,7 +100,8 @@
 
         created(){
             this.$cookie.set('test2', 'This cookie set by me', 1);
-            this.cookie = this.$cookie.get('test2');
+            this.cookie = localStorage.setItem('test2','Testing Stuff');
+            this.cookie = localStorage.getItem('test2');
             this.getPosts();
         }
     }
