@@ -1,40 +1,56 @@
 <template>
     <div class="container">
-        <form @submit.prevent="validateBeforeSubmit">
-            <div class="column is-12">
-                <label class="label">Email</label>
-                <p class="control has-icon has-icon-right">
-                    <input name="email" v-model="email" v-validate:email.initial="'required|email'" :class="{'input': true, 'is-danger': errors.has('email') }"
-                           type="text" placeholder="Email">
-                    <i v-show="errors.has('email')" class="fa fa-warning"></i>
-                    <span v-show="errors.has('email')" class="help is-danger">{{ errors.first('email') }}</span>
-                </p>
-            </div>
+        <form @submit.prevent="validateForm('form-1')" class="columns column is-multiline is-12" data-vv-scope="form-1">
             <div class="column is-12">
                 <label class="label">Name</label>
                 <p class="control has-icon has-icon-right">
-                    <input name="name" v-model="name" v-validate:name.initial="'required|alpha'" :class="{'input': true, 'is-danger': errors.has('name') }" type="text"
-                           placeholder="Name">
-                    <i v-show="errors.has('name')" class="fa fa-warning"></i>
-                    <span v-show="errors.has('name')" class="help is-danger">{{ errors.first('name') }}</span>
+                    <input name="name" v-validate="'required|min:5'" :class="{'input': true, 'is-danger': errors.has('form-1.name') }" type="text" placeholder="Name">
+                    <i v-show="errors.has('form-1.name')" class="fa fa-warning"></i>
+                    <span v-show="errors.has('form-1.name')" class="help is-danger">{{ errors.first('form-1.name') }}</span>
                 </p>
             </div>
+
+            <div class="column is-12">
+                <label class="label">Email</label>
+                <p class="control has-icon has-icon-right">
+                    <input name="email" v-validate="'required|email'" :class="{'input': true, 'is-danger': errors.has('form-1.email') }" type="text" placeholder="Email">
+                    <i v-show="errors.has('form-1.email')" class="fa fa-warning"></i>
+                    <span v-show="errors.has('form-1.email')" class="help is-danger">{{ errors.first('form-1.email') }}</span>
+                </p>
+            </div>
+            <div class="column is-12">
+                <label class="label">Password</label>
+                <p class="control has-icon has-icon-right">
+                    <input name="password" v-validate="'required|min:5'" :class="{'input': true, 'is-danger': errors.has('form-1.password') }" type="password" placeholder="Password">
+                    <i v-show="errors.has('form-1.password')" class="fa fa-warning"></i>
+                    <span v-show="errors.has('form-1.password')" class="help is-danger">{{ errors.first('form-1.password') }}</span>
+                </p>
+            </div>
+
             <div class="column is-12">
                 <label class="label">Phone</label>
                 <p class="control has-icon has-icon-right">
-                    <input name="phone" v-model="phone" v-validate:phone.initial="'required|numeric'" :class="{'input': true, 'is-danger': errors.has('phone') }"
-                           type="text" placeholder="Phone">
-                    <i v-show="errors.has('phone')" class="fa fa-warning"></i>
-                    <span v-show="errors.has('phone')" class="help is-danger">{{ errors.first('phone') }}</span>
+                    <input name="phone" v-validate="'required|numeric'" :class="{'input': true, 'is-danger': errors.has('form-1.phone') }" type="text" placeholder="Phone">
+                    <i v-show="errors.has('form-1.phone')" class="fa fa-warning"></i>
+                    <span v-show="errors.has('form-1.phone')" class="help is-danger">{{ errors.first('form-1.phone') }}</span>
                 </p>
             </div>
+
             <div class="column is-12">
-                <label class="label">Website</label>
+                <label class="label">Biography</label>
                 <p class="control has-icon has-icon-right">
-                    <input name="url" v-model="url" v-validate:url.initial="'required|url'" :class="{'input': true, 'is-danger': errors.has('url') }" type="text"
-                           placeholder="Website">
-                    <i v-show="errors.has('url')" class="fa fa-warning"></i>
-                    <span v-show="errors.has('url')" class="help is-danger">{{ errors.first('url') }}</span>
+                    <textarea name="bio" v-validate="'max:255'" :class="{'textarea': true, 'is-danger': errors.has('form-1.bio') }" type="text" placeholder="Bio">
+                    <i v-show="errors.has('form-1.bio')" class="fa fa-warning"></i>
+                    <span v-show="errors.has('form-1.bio')" class="help is-danger">{{ errors.first('form-1.bio') }}</span>
+                </p>
+            </div>
+
+            <div class="column is-12">
+                <label class="label">Image</label>
+                <p class="control has-icon has-icon-right">
+                    <input name="image" v-validate="'mimes:image/*'" :class="{'file': true, 'is-danger': errors.has('image') }" type="file">
+                    <i v-show="errors.has('image')" class="fa fa-warning"></i>
+                    <span v-show="errors.has('image')" class="help is-danger">{{ errors.first('image') }}</span>
                 </p>
             </div>
 
@@ -46,27 +62,34 @@
 </template>
 
 <script>
+    import auth from '../auth/index'
+
     export default {
         name: 'signup',
         data () {
             return {
-                email: '',
-                name: '',
-                phone: '',
-                url: '',
+                postData: {
+                    error:'',
+                    name: '',
+                    email: '',
+                    password: '',
+                    phone: '',
+                    bio: '',
+                    image: '',
+                }
             }
         },
+
         methods: {
-            validateBeforeSubmit() {
-                // Validate All returns a promise and provides the validation result.
-                this.$validator.validateAll().then(success => {
-                    if (! success) {
-                        // handle error
-                        return;
+            validateForm(scope) {
+                this.$validator.validateAll(scope).then(function(result) {
+                    if (result) {
+                        auth.signup(this,this.postData,'/')
                     }
-                    alert('From Submitted!');
                 });
+
             }
         }
+
     }
 </script>

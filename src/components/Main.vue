@@ -1,13 +1,7 @@
 <template>
     <div class="main">
-        <h1>{{ msg }}</h1>
-        <nav class="navbar navbar-default">
-            <div class="container">
-                <ul class="nav navbar-nav">
+        <h1>Main Public area</h1>
 
-                </ul>
-            </div>
-        </nav>
     </div>
 </template>
 
@@ -18,7 +12,6 @@
         name: 'main',
         data () {
             return {
-                msg: 'Welcome to Your Vue Project',
                 authenticated: auth.checkAuth()
             }
         },
