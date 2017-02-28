@@ -20,7 +20,7 @@
                         <span v-show="errors.has('form-1.password')" class="help is-danger">{{ errors.first('form-1.password') }}</span>
                     </p>
                 </div>
-                <span v-show="errorMessage" class="help is-danger">{{ errorMessage }}</span>
+                <el-alert show-icon title="Credential Error" description="Username and password is incorrect" type="error" v-if="error"></el-alert>
                 <div class="column is-12">
                     <p class="control">
                         <button class="button is-primary" type="submit" name="button">Login</button>
@@ -38,18 +38,19 @@
         name: 'login',
         data () {
             return {
-                errorMessage:'',
+                error:'',
+                closeMessage:false,
                 login :{
-                    email: 'ucha19871@gmail.com',
-                    password: '12345'
+                    email: '',
+                    password: ''
                 },
             }
         },
         methods: {
-            validateForm(scope) {
-                this.$validator.validateAll(scope).then(result => {
+            validateForm() {
+                this.$validator.validateAll().then(result => {
                     if (result) {
-                        auth.login(this.errorMessage,this.login,'/')
+                        auth.login(this,this.login,'/')
                     }
                 });
 

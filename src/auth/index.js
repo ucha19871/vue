@@ -17,11 +17,10 @@ export default {
                 localStorage.setItem('token', res.data.token)
                 this.user.authenticated = true
                 if (redirect) {
-                    //this.$router.go('/')
                     window.location.href = redirect
                 }
             })
-            .catch(error => context = error);
+            .catch(error => context.error = error);
     },
 
     // signup(context, creds, redirect) {

@@ -32,7 +32,6 @@ Vue.use(ElementUI)
 Vue.use(VueCookie);
 Axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
 Vue.prototype.$http = Axios
-//Vue.prototype.authenticated = auth.checkAuth();
 
 
 router.beforeEach((to, from, next) => {

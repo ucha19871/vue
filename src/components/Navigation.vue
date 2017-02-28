@@ -2,7 +2,7 @@
     <div >
         <nav class="nav">
             <div class="nav-left">
-                <router-link class="nav-item" v-if="authenticated"  to="/">
+                <router-link class="nav-item"  to="/">
                     <img src="http://bulma.io/images/bulma-logo.png" width="50" alt="Bulma logo">
                 </router-link>
             </div>
