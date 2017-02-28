@@ -48,13 +48,7 @@
             validateForm(scope) {
                 this.$validator.validateAll(scope).then(result => {
                     if (result) {
-                        auth.login(this.errorMessage,this.login,'test2')
-//                        this.$http.post(this.conf.API_DOMAIN + 'auth',this.login)
-//                            .then((res) => {
-//                                this.token = res.data.token
-//                                localStorage.setItem('token',res.data.token)
-//                            })
-//                            .catch(error => console.log(error));
+                        auth.login(this.errorMessage,this.login,'/')
                     }
                 });
 
