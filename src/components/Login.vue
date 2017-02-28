@@ -1,8 +1,9 @@
 <template>
-    <div class="container">
+    <div>
+        <br>
         <div class="columns is-multiline">
             <form @submit.prevent="validateForm('form-1')" class="columns column is-multiline is-12" data-vv-scope="form-1">
-                <legend>Form 1</legend>
+                <legend>Enter your credentials</legend>
                 <div class="column is-12">
                     <label class="label">Email</label>
                     <p class="control has-icon has-icon-right">

@@ -17,6 +17,7 @@ export default {
                 localStorage.setItem('token', res.data.token)
                 this.user.authenticated = true
                 if (redirect) {
+                    //this.$router.go('/')
                     window.location.href = redirect
                 }
             })

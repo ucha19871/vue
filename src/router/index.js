@@ -15,9 +15,9 @@ export default new Router({
     routes: [
         {path: '/', name: 'Main', component: Main, meta : {auth:false}},
         {path: '/login', name: 'Login', component: Login, meta : {auth:false}},
-        {path: '/logout', name: 'Logout', component: Login, meta : {auth:false}},
         {path: '/signup', name: 'Signup', component: Signup, meta : {auth:false}},
-        {path: '/test', name: 'Test', component: Test, meta : {auth:false}},
+        {path: '/logout', name: 'Logout', component: Login, meta : {auth:true}},
+        {path: '/test', name: 'Test', component: Test, meta : {auth:true}},
         {path: '/test2', name: 'Test2', component: Test2, meta : {auth:true}},
 
     ]
