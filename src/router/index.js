@@ -5,7 +5,6 @@ import Test from "components/Test";
 import Test2 from "components/Test2";
 import Login from "components/Login";
 import Signup from "components/Signup";
-import auth from '../auth/index';
 
 
 Vue.use(Router)
