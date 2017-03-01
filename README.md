@@ -21,3 +21,6 @@ npm run build --report
 ---
 
 [Demo Page](http://vue.expertj.com/)
+
+email: demo@example.com                                    
+password: 12345                 
