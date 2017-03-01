@@ -20,4 +20,4 @@ npm run build --report
 
 ---
 
-[Demo page]: (http://vue.expertj.com/)
+[Demo Page](http://vue.expertj.com/)
