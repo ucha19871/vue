@@ -1,5 +1,6 @@
 <template>
     <div class="task">
+        <br>
         <h1>Tasks</h1>
 
         <table class="table  is-striped">
@@ -8,13 +9,15 @@
                 <th>ID</th>
                 <th>Title</th>
                 <th>Status</th>
+                <th>Created</th>
             </tr>
             </thead>
             <tbody>
                 <tr v-for="task in tasks">
                     <td>{{task.id}}</td>
                     <td>{{task.title}}</td>
-                    <td><el-checkbox v-model="task.completed"></el-checkbox></td>
+                    <td><el-checkbox v-model="task.completed" @change="updateTask(task)"></el-checkbox></td>
+                    <td>{{task.created_at}}</td>
                 </tr>
             </tbody>
         </table>
@@ -33,15 +36,24 @@
         },
         mounted(){
           this.getTasks()
-            console.log(this.tasks)
         },
         methods: {
             getTasks() {
                 this.$http.get(this.$conf.API_URL + 'task')
                     .then(res => this.tasks = res.data.data)
                     .catch(res => console.log(res))
+            },
+            updateTask(task){
+                console.log(task)
+                this.$http.put(this.$conf.API_URL + 'task/update/' + task.id, { "completed": task.completed })
+                    .catch(res => console.log(res))
             }
         }
     }
 </script>
 
+<style scoped>
+    .task{
+        margin-top: 100px;
+    }
+</style>
