@@ -10,6 +10,8 @@
             <div class="nav-right nav-menu">
                 <router-link class="nav-item" v-if="authenticated"  to="test">Test</router-link>
                 <router-link class="nav-item" v-if="authenticated"  to="test2">Test 2</router-link>
+                <router-link class="nav-item" v-if="authenticated"  to="tasks">Tasks</router-link>
+
                 <a href="#" class="nav-item" v-if="authenticated" @click="logOut()">Logout</a>
                 <router-link class="nav-item" v-if="!authenticated" to="login">Login</router-link>
                 <router-link class="nav-item" v-if="!authenticated" to="signup">Sign Up</router-link>

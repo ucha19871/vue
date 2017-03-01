@@ -1,8 +1,8 @@
 import {router} from "vue-router";
 import axios from "axios";
-const API_URL = 'http://api.expertj.com/api/'
-const LOGIN_URL = API_URL + 'auth'
-const SIGNUP_URL = API_URL + 'register'
+import config from '../config'
+const LOGIN_URL = config.init().API_URL + 'auth'
+const SIGNUP_URL = config.init().API_URL + 'register'
 
 
 export default {

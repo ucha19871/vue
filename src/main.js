@@ -8,8 +8,13 @@ import Axios from "axios";
 import "element-ui/lib/theme-default/index.css";
 import VeeValidate from "vee-validate";
 import VueCookie from "vue-cookie";
-import auth from './auth/index';
-const config = {
+import auth from "./auth/index";
+import config from "./config"
+//GLOBAL APP Configuration
+Vue.prototype.$conf = config.init()
+
+
+const validationConfig = {
     errorBagName: 'errors', // change if property conflicts.
     fieldsBagName: 'fields',
     delay: 0,
@@ -27,14 +32,15 @@ const config = {
     }
 };
 
-Vue.use(VeeValidate, config);
+Vue.use(VeeValidate, validationConfig);
 Vue.use(ElementUI)
 Vue.use(VueCookie);
-Axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
 Vue.prototype.$http = Axios
 
 
+
 router.beforeEach((to, from, next) => {
+    Axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
     if (to.meta.auth) {
         // this route requires auth, check if logged in
         // if not, redirect to login page.

@@ -5,6 +5,7 @@ import Test from "components/Test";
 import Test2 from "components/Test2";
 import Login from "components/Login";
 import Signup from "components/Signup";
+import Tasks from "components/client/Tasks";
 
 
 Vue.use(Router)
@@ -19,6 +20,7 @@ export default new Router({
         {path: '/logout', name: 'Logout', component: Login, meta : {auth:true}},
         {path: '/test', name: 'Test', component: Test, meta : {auth:true}},
         {path: '/test2', name: 'Test2', component: Test2, meta : {auth:true}},
+        {path: '/tasks', name: 'Tasks', component: Tasks, meta : {auth:true}},
 
     ]
 });
