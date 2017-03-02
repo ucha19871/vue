@@ -3,6 +3,7 @@
         <br>
         <h1>Tasks</h1>
 
+
         <table class="table  is-striped">
             <thead>
             <tr>
@@ -13,12 +14,14 @@
             </tr>
             </thead>
             <tbody>
-                <tr v-for="task in tasks">
-                    <td>{{task.id}}</td>
-                    <td>{{task.title}}</td>
-                    <td><el-checkbox v-model="task.completed" @change="updateTask(task)"></el-checkbox></td>
-                    <td>{{task.created_at}}</td>
-                </tr>
+            <tr v-for="task in tasks">
+                <td>{{task.id}}</td>
+                <td>{{task.title}}</td>
+                <td>
+                    <el-checkbox v-model="task.completed" @change="updateTask(task)"></el-checkbox>
+                </td>
+                <td>{{task.created_at}}</td>
+            </tr>
             </tbody>
         </table>
 
@@ -35,7 +38,7 @@
             }
         },
         mounted(){
-          this.getTasks()
+            this.getTasks()
         },
         methods: {
             getTasks() {
@@ -43,9 +46,13 @@
                     .then(res => this.tasks = res.data.data)
                     .catch(res => console.log(res))
             },
+            createTask(){
+                this.$http.get(this.$conf.API_URL + 'task/store')
+                    .then(res => this.tasks.push(res.data.data) )
+                    .catch(res => console.log(res))
+            },
             updateTask(task){
-                console.log(task)
-                this.$http.put(this.$conf.API_URL + 'task/update/' + task.id, { "completed": task.completed })
+                this.$http.put(this.$conf.API_URL + 'task/update/' + task.id, {"completed": task.completed})
                     .catch(res => console.log(res))
             }
         }
@@ -53,7 +60,7 @@
 </script>
 
 <style scoped>
-    .task{
+    .task {
         margin-top: 100px;
     }
 </style>
