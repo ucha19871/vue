@@ -23,7 +23,7 @@
                 <el-alert show-icon title="Credential Error" description="Username and password is incorrect" type="error" v-if="error"></el-alert>
                 <div class="column is-12">
                     <p class="control">
-                        <button class="button is-primary" type="submit" name="button">Login</button>
+                        <button class="button is-primary" :class="{'is-loading':loading}" type="submit" name="button">Login</button>
                         <button class="button is-danger" type="button" name="button" @click="errors.clear('form-1')">Clear</button>
                     </p>
                 </div>
@@ -38,6 +38,7 @@
         name: 'login',
         data () {
             return {
+                loading:false,
                 error:'',
                 closeMessage:false,
                 login :{
@@ -47,11 +48,14 @@
             }
         },
         methods: {
-            validateForm() {
-                this.$validator.validateAll().then(result => {
-                    if (result) {
-                        auth.login(this,this.login,'/')
+            validateForm(scope) {
+                this.$validator.validateAll(scope).then(success => {
+                    if (this.errors.errors.length > 0) {
+                        this.loading = false;
+                        return;
                     }
+
+                    auth.login(this,this.login,'/')
                 });
 
             }
